@@ -1,28 +1,30 @@
 <style type="text/css">
         html,
         body {
+            background-color: #F8F8F8;
             height: 100%;
         }
-    #green {
-        height: 100%;
-        background: white;
-        text-align: center;
-        color: black;
-    }
+        .active a{
+            background-color: #41A0E4;
+        }
 </style>
-    <div class="col-2 bg-white shadow-sm mt-3" id="green" >
-        <h4>Sidebar</h4>
-        <!-- Navigation links in sidebar-->
-        <a href="#">Link 1</a>
-        <br/>
-        <br/>
-        <a href="#">Link 2</a>
-        <br/>
-        <br/>
-        <a href="#">Link 3</a>
-        <br/>
-        <br/>
-        <a href="#">Link 4</a>
-        <br/>
-        <br/>
-    </div>
+<ul class="nav flex-column nav-pills col-2 bg-white shadow-sm mt-2 {{ (request()->is('')) ? 'd-none' : '' }}" style="padding-right: 0">
+    <li class="nav-item">
+        <a class="nav-link {{ (request()->is(['superadmin/dashboard*']) ? 'active' : '') }}" href="{{ route('superadmin.dashboard') }}">
+            <i class="fas fa-fw fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ (request()->is(['superadmin/user*']) ? 'active' : '') }}" href="{{ route('superadmin.user.index') }}">
+            <i class="fas fa-fw fa-regular fa-user"></i>
+            <span>Manajemen User</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ (request()->is(['superadmin/product*']) ? 'active' : '') }}" href="{{ route('superadmin.product.index') }}">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Manajemen Produk</span>
+        </a>
+    </li>
+</ul>

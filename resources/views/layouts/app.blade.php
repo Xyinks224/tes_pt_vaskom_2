@@ -18,24 +18,32 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    @stack('style')
 </head>
 
 </head>
-<body class="background: #F8F8F8;">
+<body>
     <div id="app" class="container-fluid h-100">
         @include('layouts.navbar')
-        <div class="row h-100">
-            @include('layouts.sidebar')
-			<div class="col-10" style="text-align: justify;">
+        <div class="row justify-content-center h-100">
+            @auth
+                @if (auth()->user()->role == 'superadmin')
+                    @include('layouts.sidebar')
+                @endif
+            @endauth
+			<div class="col-10">
 				<main class="py-4">
-                    {{-- @yield('content') --}}
-                    halohalo
+                    @yield('content')
+
                 </main>
 			</div>
 		</div>
 	</div>
+
+    @stack('script')
 </body>
 </html>

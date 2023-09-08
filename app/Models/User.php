@@ -20,7 +20,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone_number',
         'password',
+        'role',
+        'status',
+        'profile',
     ];
 
     /**
@@ -41,4 +45,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getProfileAttribute($value)
+    {
+        return (!empty($value) && !is_null($value)) ? asset('storage/'.$value) : $value;
+    }
 }
