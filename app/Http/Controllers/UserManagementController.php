@@ -126,7 +126,7 @@ class UserManagementController extends Controller
             Storage::delete($user->getRawOriginal('profile'));
         }
         $user->delete();
-        Session::flash('message', 'Berhasil Mengubah User '.$user->name);
+        Session::flash('message', 'Berhasil Menghapus User '.$user->name);
         return redirect()->back();
     }
 }

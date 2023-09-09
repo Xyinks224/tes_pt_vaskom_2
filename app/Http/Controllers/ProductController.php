@@ -90,25 +90,24 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Product $product)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
+            'price' => ['required', 'numeric', 'min:1'],
         ]);
 
         $input = $request->all();
-        $input['password'] = bcrypt(Str::random(10));
 
-        if ($request->profile) {
-            Storage::delete($user->getRawOriginal('profile'));
-            $input['profile'] = Storage::put('users/'.$user->id.'/profile', $request->profile);
+        if ($request->image) {
+            Storage::delete($product->getRawOriginal('image'));
+            $input['image'] = Storage::put('product', $request->image);
         }
 
 
-        $user->update($input);
+        $product->update($input);
 
-        Session::flash('message', 'Berhasil Mengubah User '.$user->name);
+        Session::flash('message', 'Berhasil Mengubah Produk '.$product->name);
         return redirect()->back();
     }
 
@@ -118,13 +117,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Product $product)
     {
-        if ($user->profile) {
-            Storage::delete($user->getRawOriginal('profile'));
+        if ($product->image) {
+            Storage::delete($product->getRawOriginal('image'));
         }
-        $user->delete();
-        Session::flash('message', 'Berhasil Mengubah User '.$user->name);
+        $product->delete();
+        Session::flash('message', 'Berhasil Menghapus Produk '.$product->name);
         return redirect()->back();
     }
 }

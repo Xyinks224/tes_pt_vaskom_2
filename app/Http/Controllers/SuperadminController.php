@@ -11,6 +11,7 @@ class SuperadminController extends Controller
     public function index() {
         $user = User::get();
         $product = Product::get();
+        $latest = Product::orderBy('created_at', 'desc')->take(10)->get();
 
         $user_active = $user->where('status', 'enable')->count('id');
         $product_active = $product->where('status', 'enable')->count('id');
@@ -20,6 +21,7 @@ class SuperadminController extends Controller
             'product' => $product,
             'user_active' => $user_active,
             'product_active' => $product_active,
+            'latest' => $latest
         ]);
     }
 

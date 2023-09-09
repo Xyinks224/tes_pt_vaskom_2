@@ -110,7 +110,7 @@
                                         <div class="form-group">
                                             <label for="profile" class="col-form-label">Profile</label>
                                             <input type="file" name="profile" accept="profile/*" class="form-control" id="profile">
-                                            <div class="mt-2">
+                                            <div class="mt-2 text-center">
                                                 <img id="preview" src="{{ $user->profile ?? asset('img/upload_image.svg') }}" alt="preview image" style="max-height: 250px;">
                                             </div>
                                         </div>
@@ -207,7 +207,7 @@
               </div>
               <div class="form-group">
                 <label for="profile" class="col-form-label">Profile</label>
-                <div class="mt-2">
+                <div class="mt-2 text-center">
                     <img id="preview2" src="{{ asset('img/upload_image.svg') }}" alt="preview image" style="max-height: 250px;">
                 </div>
                 <input type="file" name="profile" accept="profile2/*" class="form-control" id="profile2">

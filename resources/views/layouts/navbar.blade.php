@@ -8,9 +8,9 @@
     <div class="container d-flex justify-content-between">
         <a class="navbar-brand" href="#"><img src="{{ asset('img/logo.svg') }}" class="img-fluid" alt="..." height="36"></a>
         @guest
-        <form class="w-50">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        </form>
+            <form class="w-50">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            </form>
         @endguest
         <div class="d-flex">
             @guest
@@ -23,16 +23,16 @@
               <div class="collapse navbar-collapse" id="navbar-list-4">
                 <ul class="navbar-nav">
                     <li class="nav-item text-right">
-                        <span class="text-info text-end" style="font-size: 12px">Hallo Admin.</span>
+                        <span class="text-info text-end" style="font-size: 12px">Hallo {{ Auth::user()->role }}.</span>
                         <p>{{ Auth::user()->name }}</p>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+                            <img src="{{ Auth::user()->profile ?? asset('img/no_profile.svg') }}" width="40" height="40" class="rounded-circle">
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <div class="text-center m-3">
-                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+                                <img src="{{ Auth::user()->profile ?? asset('img/no_profile.svg') }}" width="40" height="40" class="rounded-circle">
                                 <div>
                                     <span>{{ Auth::user()->name }}</span>
                                     <p style="font-size: 10px">{{ Auth::user()->email }}</p>

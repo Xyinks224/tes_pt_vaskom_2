@@ -59,37 +59,26 @@
     <div class="mt-5">
         <h4>Produk Terbaru</h4>
         <table class="table">
-            <thead class="bg-info">
+            <thead class="bg-primary">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Preview</th>
+                <th scope="col">Gambar</th>
                 <th scope="col">Produk</th>
                 <th scope="col">Tanggal Dibuat</th>
                 <th scope="col">Harga (Rp)</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-              </tr>
+                <?php $no = 1 ?>
+                @foreach ($latest as $item)
+                <tr>
+                  <td>{{ $no++ }}</td>
+                  <td><img src="{{ $item->image }}" alt="" style="max-height: 150px"></td>
+                  <td>Otto</td>
+                  <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
+                  <td>Rp. {{ number_format($item->price) }}</td>
+                </tr>
+                @endforeach
             </tbody>
           </table>
 
