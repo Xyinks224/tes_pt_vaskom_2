@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserPasswordMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -47,8 +49,8 @@ class UserManagementController extends Controller
         ]);
 
         $input = $request->all();
-        $input['password'] = bcrypt(Str::random(10));
-
+        $password = Str::random(10);
+        $input['password'] = bcrypt($password);
 
         $user = User::create($input);
 
@@ -56,8 +58,16 @@ class UserManagementController extends Controller
             $input['profile'] = Storage::put('users/'.$user->id.'/profile', $request->profile);
         }
 
-
         $user->update($input);
+
+        $data = ([
+            'name' => $user->name,
+            'password' => $password
+        ]);
+
+        if ($user->status == 'enable') {
+            Mail::to($user->email)->send(new UserPasswordMail($data));
+        }
 
         Session::flash('message', 'Berhasil Menambah User '.$user->name);
         return redirect()->back();
@@ -100,15 +110,25 @@ class UserManagementController extends Controller
         ]);
 
         $input = $request->all();
-        $input['password'] = bcrypt(Str::random(10));
+
+        $password = Str::random(10);
+        $input['password'] = bcrypt($password);
 
         if ($request->profile) {
             Storage::delete($user->getRawOriginal('profile'));
             $input['profile'] = Storage::put('users/'.$user->id.'/profile', $request->profile);
         }
 
-
         $user->update($input);
+
+        $data = ([
+            'name' => $user->name,
+            'password' => $password
+        ]);
+
+        if ($user->status == 'enable') {
+            Mail::to($user->email)->send(new UserPasswordMail($data));
+        }
 
         Session::flash('message', 'Berhasil Mengubah User '.$user->name);
         return redirect()->back();

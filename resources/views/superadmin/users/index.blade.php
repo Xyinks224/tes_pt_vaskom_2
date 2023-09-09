@@ -108,6 +108,18 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
+                                            <label for="status" class="col-form-label">Status</label>
+                                            <select name="status" id="status" class="form-control">
+                                                <option value="enable" {{ old('status', $user->status) == 'enable' ? 'selected' : ''}}>Aktif</option>
+                                                <option value="disable" {{ old('status', $user->status) == 'disable' ? 'selected' : '' }}>Tidak Aktif</option>
+                                            </select>
+                                            @error('status')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                          </div>
+                                        <div class="form-group">
                                             <label for="profile" class="col-form-label">Profile</label>
                                             <input type="file" name="profile" accept="profile/*" class="form-control" id="profile">
                                             <div class="mt-2 text-center">
@@ -200,6 +212,18 @@
                 <label for="email" class="col-form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
                 @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="status" class="col-form-label">Status</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="enable" {{ old('status') == 'enable' ? 'selected' : ''}}>Aktif</option>
+                    <option value="disable" {{ old('status') == 'disable' ? 'selected' : '' }}>Tidak Aktif</option>
+                </select>
+                @error('status')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

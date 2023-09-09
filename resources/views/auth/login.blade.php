@@ -31,15 +31,15 @@
         <div class="d-flex justify-content-center">
             <div class="col-6">
                 <img src="{{ asset('img/register.svg') }}" class="img-fluid" alt="">
-                <div class="centered" style="top: 40%;"><h1><b>NAMA APLIKASI</b></h1></div>
-                <div class="centered" style="top: 50%;"><h5><b>NAMA APLIKASI</b></h5></div>
+                <div class="centered" style="top: 40%;"><h1><b>VASKOM</b></h1></div>
+                <div class="centered" style="top: 50%;"><p><b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum magnam sint nesciunt impedit!</b></p></div>
             </div>
             <div class="col-6">
                 <div class="container d-flex h-100">
                     <div class="row align-self-center w-100">
                         <div class="col-8 mx-auto">
                             <div class="mb-3">
-                                <h3><b>Selamat Datang Admin</b></h3>
+                                <h3><b>Selamat Datang</b></h3>
                                 <p class="text-secondary">Silahkan masukkan email atau nomor telepon dan password
                                     Anda untuk mulai menggunakan aplikasi.</p>
                             </div>

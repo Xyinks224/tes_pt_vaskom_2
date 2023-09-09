@@ -24,9 +24,9 @@ class HomeController extends Controller
         if (Auth::user()->role == 'superadmin') {
             return redirect()->route('superadmin.dashboard');
         } else if (Auth::user()->role == 'user') {
-            return redirect()->route('home');
+            return redirect('/');
         } else {
-            return redirect()->route('home');
+            return redirect('/');
         }
     }
 

@@ -31,8 +31,8 @@
         <div class="d-flex justify-content-center">
             <div class="col-6">
                 <img src="{{ asset('img/register.svg') }}" class="img-fluid" alt="">
-                <div class="centered" style="top: 40%;"><h1><b>NAMA APLIKASI</b></h1></div>
-                <div class="centered" style="top: 50%;"><h5><b>NAMA APLIKASI</b></h5></div>
+                <div class="centered" style="top: 40%;"><h1><b>VASKOM</b></h1></div>
+                <div class="centered" style="top: 50%;"><p><b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum magnam sint nesciunt impedit!</b></p></div>
             </div>
             <div class="col-6">
                 <div class="container d-flex h-100">

@@ -28,5 +28,7 @@ Route::middleware(['auth', 'superadmin'])->prefix('superadmin')->name('superadmi
 
     Route::resource('user', UserManagementController::class);
 
+    Route::get('/mail/{user}', [UserManagementController::class, 'mail'])->name('mail');
+
     Route::resource('product', ProductController::class);
 });
